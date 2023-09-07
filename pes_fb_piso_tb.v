@@ -1,6 +1,6 @@
 // Code your testbench here
 // or browse Examples
-module iiitb_tb_piso();
+module pes_fb_piso_tb();
   
   reg clk, load;
   reg [3:0] data_in;
@@ -10,7 +10,7 @@ module iiitb_tb_piso();
   iiitb_piso u1 (clk, load, data_in, data_out);
   
   initial begin
-    $dumpfile("iiitb_piso.vcd");
+    $dumpfile("pes_fb_piso.vcd");
     $dumpvars(0);
   end
   
