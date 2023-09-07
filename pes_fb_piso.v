@@ -1,4 +1,4 @@
-module iiitb_piso (clk, load, data_in, data_out);
+module pes_fb_piso (clk, load, data_in, data_out);
   
   input clk, load;
   input [3:0]data_in;
