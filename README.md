@@ -11,7 +11,7 @@ I. [**Introduction to Parallel Input Serial Output Registers**](https://github.c
 
 II. [**RTL Design and Synthesis**](https://github.com/Srini-web/pes_fb_piso#ii-rtl-design-and-synthesis)
   1. [Icarus Verilog (iverilog) & Yosys Installation on Ubuntu](https://github.com/Srini-web/pes_fb_piso#1-icarus-verilog-iverilog--yosys-installation-on-ubuntu)
-  2. [RTL Pre-Simulation]
+  2. [RTL Pre-Simulation](https://github.com/Srini-web/pes_fb_piso#rtl-pre-simulation)
   3. [Synthesis]
   4. [GLS Post-simulation]
 
