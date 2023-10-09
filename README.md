@@ -28,7 +28,7 @@ PISO Shift Registers are commonly used in
 The  4-bit PISO shift register circuit diagram is shown below. This circuit mainly includes 4, D flip flops which are connected as per the diagram shown. The CLK(clock) input signal is connected directly to all the flip-flops however the input data is individually connected to every flip-flop. Hence it is a synchronous sequential circuit. The previous flip-flop’s output, as well as parallel input data, is simply connected to the input of the second flip-flop. 
 
 <p align='center'>
-   ![p1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/669b094a-8c5c-4dd8-a611-ddd0c9fbf9db)
+   <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/669b094a-8c5c-4dd8-a611-ddd0c9fbf9db'>
 </p> 
 
 In the PISO shift register circuit, the input data is applied to the input pins of the shift registers from D0 to D3  at the same time. On every subsequent clock pulse, the output is read from the shift register serially 1-bit at a time from the input. Here, one CLK pulse is enough to load the 4 bits of data but four pulses are required to unload all four bits serially.
@@ -48,11 +48,11 @@ The connections are made as follows
 Refer to the truth table below to understand the progress after each clock pulse. In the below truth table, input is taken as '1011'. Observe 'Q3' at each clock cycle for the serial output.
 
 <p align='center'> 
-  ![p2](https://github.com/Srini-web/pes_fb_piso/assets/77874288/df974b92-40c3-4669-b547-6cc7e5114127)
+  <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/df974b92-40c3-4669-b547-6cc7e5114127'>
 </p>
 
 
 <p align='center'>
-  ![p3](https://github.com/Srini-web/pes_fb_piso/assets/77874288/46f0cfe8-8eab-41c4-a6bb-b522a3b8ef57)
+  <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/46f0cfe8-8eab-41c4-a6bb-b522a3b8ef57'>
 </p>
 
