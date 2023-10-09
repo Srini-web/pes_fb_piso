@@ -56,3 +56,51 @@ Refer to the truth table below to understand the progress after each clock pulse
   <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/46f0cfe8-8eab-41c4-a6bb-b522a3b8ef57'>
 </p>
 
+
+## **II. RTL Design and Synthesis**
+
+### **1. Icarus Verilog (iverilog) & Yosys Installation on Ubuntu**
+
+#### Required Tools and Installation Details
+
+#### iverilog
+
+Icarus Verilog (iverilog) is a Verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format. For batch simulation, the compiler can generate an intermediate form called vvp assembly. This intermediate form is executed by the "vvp" command. For synthesis, the compiler generates netlists in the desired format.
+
+#### GTKWave
+
+GTKWave is a fully featured GTK+ based wave viewer for Unix, Win32, and Mac OSX which reads LXT, LXT2, VZT, FST, and GHW files as well as standard Verilog VCD/EVCD files and allows their viewing.
+
+#### yosys
+
+Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
+
+### Installation of iverilog and GTKwave
+
+- In Ubuntu
+  + Open the terminal and enter the following commands
+  
+  ```
+   sudo apt-get update
+   sudo apt-get install iverilog 
+   sudo apt-get install gtkwave
+  ```
+ 
+### Installation of yosys
+
+- Type the following command to install `yosys`
+
+  ```
+  git clone https://github.com/YosysHQ/yosys.git
+  sudo apt install make
+  
+  sudo apt-get install build-essential clang bison flex \
+	libreadline-dev gawk tcl-dev libffi-dev git \
+	graphviz xdot pkg-config python3 libboost-system-dev \
+	libboost-python-dev libboost-filesystem-dev zlib1g-dev
+  
+  sudo make install
+  ```
+
+
+
