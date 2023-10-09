@@ -102,5 +102,11 @@ Yosys is a framework for Verilog RTL synthesis. It currently has extensive Veril
   sudo make install
   ```
 
+## RTL Pre-Simulation
 
+1. Create files for PISO design `pes_fb_piso.v` and testbench for the same `pes_fb_piso_tb.v`
+
+2. Details information of files
+
+3. To Run the .v file, type the following commands 
 
