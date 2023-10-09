@@ -7,7 +7,7 @@ This repository contains details of design and working of a 4-bit PISO(Parallel 
 
 ## TABLE OF CONTENT
 
-I. [**Introduction to Parallel Input Serial Output Registers**]([https://github.com/drvasanthi/iiitb_cg/blob/main/README.md#introduction](https://github.com/Srini-web/pes_fb_piso/edit/main/README.md#i-introduction))    
+I. [**Introduction to Parallel Input Serial Output Registers**](https://github.com/Srini-web/pes_fb_piso#i-introduction)    
 
 II. [**RTL Design and Synthesis**]
   1. [Icarus Verilog (iverilog) & Yosys Installation on Ubuntu]
