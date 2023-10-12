@@ -7,7 +7,7 @@ module pes_fb_piso_tb();
   
   wire data_out;
   
-  iiitb_piso u1 (clk, load, data_in, data_out);
+  pes_fb_piso u1 (clk, load, data_in, data_out);
   
   initial begin
     $dumpfile("pes_fb_piso.vcd");
