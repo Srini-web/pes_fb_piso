@@ -106,7 +106,98 @@ Yosys is a framework for Verilog RTL synthesis. It currently has extensive Veril
 
 1. Create files for PISO design `pes_fb_piso.v` and testbench for the same `pes_fb_piso_tb.v`
 
-2. Details information of files
+ <p align='center'>
+  <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/634c6b66-90d0-4b0e-9da0-cfef8e70fccd'>
+</p>
+<p align='center'>
+  <img src='https://github.com/Srini-web/pes_fb_piso/assets/77874288/e7386d81-38f2-4cb1-8e72-40c37fd37cc3'>
+</p>  
 
-3. To Run the .v file, type the following commands 
+3. Detailed information on files
+   
+![s3list](https://github.com/Srini-web/pes_fb_piso/assets/77874288/e9b693d2-7b2d-4e2b-93ac-a59037374974)
+![s4list](https://github.com/Srini-web/pes_fb_piso/assets/77874288/41d5f3aa-ad8a-46a2-ada1-24c46fb2855a)
+
+4. To Run the .v file, type the following commands
+
+   ```
+   cd Desktop
+   cd piso
+   iverilog pes_fb_piso.v  pes_fb_piso_tb.v
+   ./a.out
+   gtkwave -o pes_fb_piso.vcd
+   ```
+![s5run1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/73e737ae-22cb-41a0-9a9f-66a7092e4492)
+
+Output is initially not outputted owing to the large size of the file
+
+![s6run2](https://github.com/Srini-web/pes_fb_piso/assets/77874288/aac6d751-add4-4de3-be72-6fe9c0311682)
+
+Error is resolved as `-o` is included short for `--optimise`
+
+![s7](https://github.com/Srini-web/pes_fb_piso/assets/77874288/129ba819-b874-428c-9650-c8e36f6d545f)
+
+Pre-Simulation output
+
+<img width="639" alt="s8gtkfin" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/42d27343-af5e-4f09-b14c-ac7754611485">
+
+## Synthesis
+
+Synthesis transforms the simple RTL design into a gate-level netlist with all the constraints as specified by the designer. In simple language, Synthesis is a process that converts the abstract form of design to a properly implemented chip in terms of logic gates.
+
+Synthesis takes place in multiple steps:
+
+  -  Converting RTL into simple logic gates.
+  -  Mapping those gates to actual technology-dependent logic gates available in the technology libraries.
+  -  Optimizing the mapped netlist keeping the constraints set by the designer intact
+
+1. Invoking the yosys using the following commands
+
+![s9syncom](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b254f5d6-235c-4407-9851-9356288072f0)
+
+![s10readmodule](https://github.com/Srini-web/pes_fb_piso/assets/77874288/655274fc-5fda-4f4d-a655-006241a0a20f)
+
+2. Generating synthesized diagram
+   Enter the following commands
+
+   ```
+   read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   read_verilog pes_fb_piso.v
+   synth -top pes_fb_piso
+   dfflibmap -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   abc -liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+   ```
+   
+   Synthesised circuit is flattened and shown
+
+   ```
+   flatten
+   show
+   ```
+   
+![s13flat](https://github.com/Srini-web/pes_fb_piso/assets/77874288/c001746c-29c2-4346-a959-3c45df1ac691)
+
+Statistics drawn
+```
+stat
+```
+
+![s14stats](https://github.com/Srini-web/pes_fb_piso/assets/77874288/667b4cfc-05f5-47c6-af32-f34427fcd1b0)
+
+## GLS Post-simulation
+GLS implies running the testbench with netlist as the design under test. It is used to verify the logical correctness of the design after synthesis. It also ensures that the timing constraints are met.
+
+Execute the below commands in the project directory to perform GLS.
+```
+iverilog -DFUNCTIONAL -DUNIT_DELAY=#0 ./verilog_model/primitives.v ./verilog_model/sky130_fd_sc_hd.v
+./a.out
+gtkwave -o -g pes_fb_piso.vcd
+```
+Errors encountered in the first step are addressed as #2 and #3 in the error file
+
+<img width="639" alt="s15postsim" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/cdf733de-4b60-4c69-9b4b-c0a64f3567e5">
+
+GLS post-simulation complete
+
+![s17simulationmod](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b3314308-ce67-498a-aeaa-d8ec8a309ea7)
 
