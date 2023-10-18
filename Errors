@@ -1,0 +1,8 @@
+#1 encountered during visualisation of pre-simulation design (file too large)
+Solution: -o  for optimisation used 
+
+#2 In the first step of GLS post-simulation, while loading sky130_fd_sc_hd.v, "syntax at like 74462 I give up"
+Solution: In the site https://github.com/The-OpenROAD-Project/OpenLane/issues/518 ( Have commented endif SKY130_FD_SC_HD__LPFLOW_BLEEDER_FUNCTIONAL_V to endif // SKY130_FD_SC_HD__LPFLOW_BLEEDER_FUNCTIONAL_V)
+
+#3 GLS post-simulation waveform not displayed size too large
+Solution: -o (optimisation) -g(giga) used to reduce size of .vcd simulation dumpfile
