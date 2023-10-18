@@ -12,8 +12,8 @@ I. [**Introduction to Parallel Input Serial Output Registers**](https://github.c
 II. [**RTL Design and Synthesis**](https://github.com/Srini-web/pes_fb_piso#ii-rtl-design-and-synthesis)
   1. [Icarus Verilog (iverilog) & Yosys Installation on Ubuntu](https://github.com/Srini-web/pes_fb_piso#1-icarus-verilog-iverilog--yosys-installation-on-ubuntu)
   2. [RTL Pre-Simulation](https://github.com/Srini-web/pes_fb_piso#rtl-pre-simulation)
-  3. [Synthesis]
-  4. [GLS Post-simulation]
+  3. [Synthesis](https://github.com/Srini-web/pes_fb_piso#synthesis)
+  4. [GLS Post-simulation](https://github.com/Srini-web/pes_fb_piso#gls-post-simulation)
 
 ## **I. Introduction**
 The shift register that uses parallel input and generates serial output is known as the parallel input serial output shift register or PISO shift register. In this shift register, the input data enters a parallel way and comes out serially. The flip-flops are connected such that the input of the second flip-flop is the output of the first flip-flop. Since a 4-bit PISO shift register is being implemented, 4 flip flops are used.
@@ -183,6 +183,11 @@ stat
 ```
 
 ![s14stats](https://github.com/Srini-web/pes_fb_piso/assets/77874288/667b4cfc-05f5-47c6-af32-f34427fcd1b0)
+
+3. Write the netlist
+   ```
+   write_verilog -noattr pes_fb_piso_netlist.v
+   ```
 
 ## GLS Post-simulation
 GLS implies running the testbench with netlist as the design under test. It is used to verify the logical correctness of the design after synthesis. It also ensures that the timing constraints are met.
