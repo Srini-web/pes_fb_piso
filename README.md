@@ -15,6 +15,15 @@ II. [**RTL Design and Synthesis**](https://github.com/Srini-web/pes_fb_piso#ii-r
   3. [Synthesis](https://github.com/Srini-web/pes_fb_piso#synthesis)
   4. [GLS Post-simulation](https://github.com/Srini-web/pes_fb_piso#gls-post-simulation)
 
+III. [**Physical Design from Netlist to GDSII**]()  
+  1. [Invoke OpenLane]()  
+  2. [To Build Inverter Standard Cell Design]()  
+  3. [Synthesis]()      
+  4. [Floorplan]()  
+  5. [Placement]()  
+  6. [CTS]()  
+  7. [Routing]()  
+
 ## **I. Introduction**
 The shift register that uses parallel input and generates serial output is known as the parallel input serial output shift register or PISO shift register. In this shift register, the input data enters a parallel way and comes out serially. The flip-flops are connected such that the input of the second flip-flop is the output of the first flip-flop. Since a 4-bit PISO shift register is being implemented, 4 flip flops are used.
 
@@ -206,3 +215,4 @@ GLS post-simulation complete
 
 ![s17simulationmod](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b3314308-ce67-498a-aeaa-d8ec8a309ea7)
 
+## **III. Physical Design from Netlist to GDSII**
