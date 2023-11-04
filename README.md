@@ -1,4 +1,4 @@
-# pes_fb_piso
+![s1mount](https://github.com/Srini-web/pes_fb_piso/assets/77874288/0e9074e3-f3ba-46d3-a0c4-5b8d57a991b8)# pes_fb_piso
 ## 4-bit Parallel Input Serial Output
 This repository contains details of design and working of a 4-bit PISO(Parallel In Serial Out) Shift Register
 
@@ -16,8 +16,8 @@ II. [**RTL Design and Synthesis**](https://github.com/Srini-web/pes_fb_piso#ii-r
   4. [GLS Post-simulation](https://github.com/Srini-web/pes_fb_piso#gls-post-simulation)
 
 III. [**Physical Design from Netlist to GDSII**]()  
-  1. [Invoke OpenLane]()  
-  2. [To Build Inverter Standard Cell Design]()  
+  1. [Installations]()  
+  2. [Invoking OpenLane]()  
   3. [Synthesis]()      
   4. [Floorplan]()  
   5. [Placement]()  
@@ -219,4 +219,233 @@ GLS post-simulation complete
 Physical design is process of transforming netlist into layout which is manufacture-able [GDS]. Physical design process is often referred as PnR (Place and Route). Main steps in physical design are placement of all logical cells, clock tree synthesis & routing. During this process of physical design timing, power, design & technology constraints have to be met. Further design might require being optimized w.r.t power, performance and area.
 
 General Physical Design Flow:
+## Installations
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install -y build-essential python3 python3-venv python3-pip make git
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+
+sudo apt install docker-ce docker-ce-cli containerd.io
+
+sudo docker run hello-world
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo reboot 
+
+# After reboot
+docker run hello-world
+```
+Installing magic
+```
+sudo apt-get install m4
+sudo apt-get install tcsh
+sudo apt-get install csh
+sudo apt-get install libx11-dev
+sudo apt-get install tcl-dev tk-dev
+sudo apt-get install libcairo2-dev
+sudo apt-get install mesa-common-dev libglu1-mesa-dev
+sudo apt-get install libncurses-dev
+git clone https://github.com/RTimothyEdwards/magic
+cd magic
+./configure
+make
+make install
+```
+Installing PDKs and Tools
+```
+cd $HOME
+git clone https://github.com/The-OpenROAD-Project/OpenLane
+cd OpenLane
+make
+make test
+```
+Installing OpenSTA
+```
+https://github.com/The-OpenROAD-Project/OpenSTA
+```
+## Invoking Openlane
+We begin by making a mount
+```
+cd OpenLane
+make mount
+```
+To start the OpenLane flow in an interactive mode and to prepare the design, enter the below commands.
+
+```
+./flow.tcl -interactive
+package require openlane
+```
+
+![s1mount](https://github.com/Srini-web/pes_fb_piso/assets/77874288/7b4dea4e-8255-4c8d-a205-b3a00eebe0ba)
+
+Preparing the specified design
+
+```
+prep -design pes_fb_piso
+```
+
+![s2prep](https://github.com/Srini-web/pes_fb_piso/assets/77874288/5e542e74-a8e9-41ab-9c0e-cdb1026ca938)
+
+Prior to the above step we need to reconfigure the old `configure` json file to our specific design 
+
+![p1json](https://github.com/Srini-web/pes_fb_piso/assets/77874288/a74addf8-c9f5-4a1c-8eca-3e2301cc46b6)
+
+We also need to create a standard inverter using 
+https://github.com/Devipriya1921/Physical_Design_Using_OpenLANE_Sky130#inverter-standard-cell-layout--spice-extraction
+
+Now we merge the inverter lef files with the main design using the commands
+
+```
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+
+![s3merge](https://github.com/Srini-web/pes_fb_piso/assets/77874288/09e84aad-0dfb-41e6-964e-d2c0d6e4bd84)
+
+## Synthesis
+
+The next step is to synthesize. Run the below command.
+```
+run_synthesis
+```
+
+![s4synth](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b2aeb64b-b355-437c-8129-547eb343581e)
+
+The def file generated
+
+![s5 1synth](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b81e6fb2-85ed-4974-a3c1-fe46f9e6897d)
+
+The statistics after synthesis can be found in the <current_run_directory>/reports/synthesis/1-synthesis.AREA_0.stat.rpt
+
+![s5rpt](https://github.com/Srini-web/pes_fb_piso/assets/77874288/063a8ea8-3319-4520-9c6b-4b9bd3f6e54e)
+
+![s6rptterm](https://github.com/Srini-web/pes_fb_piso/assets/77874288/99835f61-e513-445a-bec1-d8b2396c44a5)
+
+#### Flop ratio 
+```Flop Ratio= No. of d ffs/ No. of cells = 4/10 = 0.40 ```
+
+## Floorplan
+
+To run floorplan, we run the following commmand
+```
+run_floorplan
+```
+![s71floorplan](https://github.com/Srini-web/pes_fb_piso/assets/77874288/1ed78c31-03ef-4c40-8957-96379a4230ab)
+
+To view the floorplan, we use the below magic command in the terminal opened in the directory: <current_run_directory>/results/floorplan
+```
+magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read pes_fb_piso.def &
+```
+
+![s9flrpln](https://github.com/Srini-web/pes_fb_piso/assets/77874288/15907209-9bdf-4d55-bdb6-99be974ae5ce)
+
+![s10flrplnz1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/3421cd8c-dd04-4335-9a8a-09de14ec0da3)
+
+The die area and the core area report can be found in <current_run_dir>/reports/floorplan saves as 3-initial_fp_die_area.rpt and 3-initial_fp_core_area.rpt respectively. Find the below screenshots.
+
+ 	+ Core Area
+ 
+![s11corearea](https://github.com/Srini-web/pes_fb_piso/assets/77874288/284e8330-c9b0-44b9-b489-b6eef7caba43)
+
+	+ Die Area
+ 
+ ![s12diearea](https://github.com/Srini-web/pes_fb_piso/assets/77874288/dc99722e-782a-4fe3-b23d-25a547b01fd2)
+
+ ## Placement
+
+ We run the below command to run placement
+
+ ```
+run_placement
+```
+
+![s13Aplacement](https://github.com/Srini-web/pes_fb_piso/assets/77874288/6c783d8e-4306-44e0-a854-3e0684ba804e)
+
+View the placement in the layout, using the below magic command in the terminal opened in the directory: <current_run_directory>/results/placement
+
+```
+magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read pes_fb_piso.def &
+```
+
+![s14openplacement](https://github.com/Srini-web/pes_fb_piso/assets/77874288/1f3fdb1f-5079-4363-b7e4-8b689852290e)
+
+The view after placement
+
+![p2placement](https://github.com/Srini-web/pes_fb_piso/assets/77874288/32b26e51-5f84-407c-9735-a36d1e51ba12)
+
+![p3placement2](https://github.com/Srini-web/pes_fb_piso/assets/77874288/e689ec4b-11fb-4e9d-81e0-6866fd3f7e6c)
+
+## Clock Tree Synthesis
+
+To run cts, execute the following command 
+```
+run_cts
+```
+![s15Acts](https://github.com/Srini-web/pes_fb_piso/assets/77874288/1eef85ce-1a0a-4a6c-8571-c5345ac4ceb6)
+
+## Routing 
+
+To run routing, run the following command
+```
+run_routing
+```
+
+![s16Arouting](https://github.com/Srini-web/pes_fb_piso/assets/77874288/62026d4f-d8f8-4ac7-acf4-da670558389b)
+
+To view the layout after routing, using the below magic command in the terminal opened in the directory: <current_run_directory>/results/routing
+
+```
+magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read pes_fb_piso.def &
+```
+
+![s17routingcmd](https://github.com/Srini-web/pes_fb_piso/assets/77874288/8c537e8a-e692-4630-98a2-693957e9df5d)
+
+View after opening
+
+<img width="449" alt="s18Aroutingtemp" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/309743ed-dd9d-43e9-b7ae-b040e1d1aca2">
+
+<img width="448" alt="s19Adimen" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/ef77c4a4-a19b-449c-8504-7a25b5b692c2">
+
+## STA 
+
+Post statistics are viewed using OpenSTA in design mode 
+1. Installation
+```
+sudo apt install opensta
+```
+2. Design Mode
+```
+./flow.tcl -design pes_fb_piso
+```
+Run the below commands on sta base to get the report_checks
+```
+read_liberty -max /home/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib
+read_liberty -min /home/OpenLane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib
+```
+```
+read_verilog /home/OpenLane/designs/pes_fb_piso_1/runs/<run number>/results/routing/pes_fb_piso.resized.v
+link_design pes_fb_piso
+read_sdc /home/OpenLane/designs/pes_fb_piso_1/runs/<run number>/results/cts/pes_fb_piso.sdc
+read_spef /home/OpenLane/designs/pes_fb_piso_1/runs/<run number>/results/cts/pes_fb_piso.nom.spef
+set_propagated_clock [all_clocks]
+report_checks
+report_clock_properties
+```
+<img width="295" alt="s20sta" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/b7fee604-960f-42a6-848b-e31921a7c9a0">
+
+**Statistics**
+- Area = 4878.272 um2
+- Internal Power = 1.07e-05 W (84.4%)
+- Switching Power = 1.98e-06 (15.6%)
+- Leakage Power = 2.35e-10 (0.0%)
+- Total Power = 1.27e-05 (100%)
 
