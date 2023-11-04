@@ -220,6 +220,10 @@ GLS post-simulation complete
 Physical design is process of transforming netlist into layout which is manufacture-able [GDS]. Physical design process is often referred as PnR (Place and Route). Main steps in physical design are placement of all logical cells, clock tree synthesis & routing. During this process of physical design timing, power, design & technology constraints have to be met. Further design might require being optimized w.r.t power, performance and area.
 
 General Physical Design Flow:
+
+![p4flow](https://github.com/Srini-web/pes_fb_piso/assets/77874288/8e455ede-2848-4749-a678-0961d6d4af6c)
+
+
 ## Installations
 
 ```
