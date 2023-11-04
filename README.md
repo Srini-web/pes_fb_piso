@@ -15,14 +15,15 @@ II. [**RTL Design and Synthesis**](https://github.com/Srini-web/pes_fb_piso#ii-r
   3. [Synthesis](https://github.com/Srini-web/pes_fb_piso#synthesis)
   4. [GLS Post-simulation](https://github.com/Srini-web/pes_fb_piso#gls-post-simulation)
 
-III. [**Physical Design from Netlist to GDSII**]()  
-  1. [Installations]()  
-  2. [Invoking OpenLane]()  
-  3. [Synthesis]()      
-  4. [Floorplan]()  
-  5. [Placement]()  
-  6. [CTS]()  
-  7. [Routing]()  
+III. [**Physical Design from Netlist to GDSII**](https://github.com/Srini-web/pes_fb_piso#iii-physical-design-from-netlist-to-gdsii)  
+  1. [Installations](https://github.com/Srini-web/pes_fb_piso#installations)  
+  2. [Invoking OpenLane](https://github.com/Srini-web/pes_fb_piso#invoking-openlane)  
+  3. [Synthesis](https://github.com/Srini-web/pes_fb_piso#synthesis-1)      
+  4. [Floorplan](https://github.com/Srini-web/pes_fb_piso#floorplan)  
+  5. [Placement](https://github.com/Srini-web/pes_fb_piso#placement)  
+  6. [CTS](https://github.com/Srini-web/pes_fb_piso#clock-tree-synthesis)  
+  7. [Routing](https://github.com/Srini-web/pes_fb_piso#routing)
+  8. [STA and Statistics](https://github.com/Srini-web/pes_fb_piso#routing)
 
 ## **I. Introduction**
 The shift register that uses parallel input and generates serial output is known as the parallel input serial output shift register or PISO shift register. In this shift register, the input data enters a parallel way and comes out serially. The flip-flops are connected such that the input of the second flip-flop is the output of the first flip-flop. Since a 4-bit PISO shift register is being implemented, 4 flip flops are used.
