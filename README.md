@@ -346,9 +346,9 @@ To view the floorplan, we use the below magic command in the terminal opened in 
 magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read pes_fb_piso.def &
 ```
 
-![s9flrpln](https://github.com/Srini-web/pes_fb_piso/assets/77874288/db49a19d-e1e7-421d-8d8e-3d4dc8fa9853)
+![s9flrpln](https://github.com/Srini-web/pes_fb_piso/assets/77874288/c1e0a7db-f7e7-4a35-8ded-08f2e0d603dd)
 
-![s10flrplnz1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/ce59699d-549c-4286-8b44-7a7e13fde53d)
+![s10flrplnz1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/2f1ceec2-d3b9-4395-88f5-56eb870b9cf7)
 
 The die area and the core area report can be found in <current_run_dir>/reports/floorplan saves as 3-initial_fp_die_area.rpt and 3-initial_fp_core_area.rpt respectively. Find the below screenshots.
 
