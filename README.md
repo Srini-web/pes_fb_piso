@@ -1,4 +1,4 @@
-![s1mount](https://github.com/Srini-web/pes_fb_piso/assets/77874288/0e9074e3-f3ba-46d3-a0c4-5b8d57a991b8)# pes_fb_piso
+# pes_fb_piso
 ## 4-bit Parallel Input Serial Output
 This repository contains details of design and working of a 4-bit PISO(Parallel In Serial Out) Shift Register
 
@@ -346,9 +346,9 @@ To view the floorplan, we use the below magic command in the terminal opened in 
 magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read pes_fb_piso.def &
 ```
 
-![s9flrpln](https://github.com/Srini-web/pes_fb_piso/assets/77874288/15907209-9bdf-4d55-bdb6-99be974ae5ce)
+![s9flrpln](https://github.com/Srini-web/pes_fb_piso/assets/77874288/db49a19d-e1e7-421d-8d8e-3d4dc8fa9853)
 
-![s10flrplnz1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/3421cd8c-dd04-4335-9a8a-09de14ec0da3)
+![s10flrplnz1](https://github.com/Srini-web/pes_fb_piso/assets/77874288/ce59699d-549c-4286-8b44-7a7e13fde53d)
 
 The die area and the core area report can be found in <current_run_dir>/reports/floorplan saves as 3-initial_fp_die_area.rpt and 3-initial_fp_core_area.rpt respectively. Find the below screenshots.
 
@@ -412,6 +412,8 @@ magic -T /home/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../..
 View after opening
 
 <img width="449" alt="s18Aroutingtemp" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/309743ed-dd9d-43e9-b7ae-b040e1d1aca2">
+
+Area
 
 <img width="448" alt="s19Adimen" src="https://github.com/Srini-web/pes_fb_piso/assets/77874288/ef77c4a4-a19b-449c-8504-7a25b5b692c2">
 
