@@ -1,4 +1,4 @@
-# pes_fb_piso
+![s23powerrpt](https://github.com/Srini-web/pes_fb_piso/assets/77874288/5827320e-5ef2-4e1c-ac47-acbf6f8da395)# pes_fb_piso
 ## 4-bit Parallel Input Serial Output
 This repository contains details of design and working of a 4-bit PISO(Parallel In Serial Out) Shift Register
 
@@ -397,6 +397,23 @@ To run cts, execute the following command
 run_cts
 ```
 ![s15Acts](https://github.com/Srini-web/pes_fb_piso/assets/77874288/1eef85ce-1a0a-4a6c-8571-c5345ac4ceb6)
+
+Timing Report
+
+![s22ctstiming](https://github.com/Srini-web/pes_fb_piso/assets/77874288/b436086a-8456-42ec-98f7-284a4f9a87cb)
+
+Power Report
+
+![s23powerrpt](https://github.com/Srini-web/pes_fb_piso/assets/77874288/08e7c5a1-966d-4053-8be3-8437d0c746f0)
+
+Slack Report
+
+![s24ctsslack](https://github.com/Srini-web/pes_fb_piso/assets/77874288/68665458-1abb-4547-a450-37368cfc97fb)
+
+Area Report
+
+![s25ctsarearpt](https://github.com/Srini-web/pes_fb_piso/assets/77874288/236b86c8-49d8-438b-8c86-2b9ac2715855)
+
 
 ## Routing 
 
