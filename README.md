@@ -1,4 +1,4 @@
-![s23powerrpt](https://github.com/Srini-web/pes_fb_piso/assets/77874288/5827320e-5ef2-4e1c-ac47-acbf6f8da395)# pes_fb_piso
+# pes_fb_piso
 ## 4-bit Parallel Input Serial Output
 This repository contains details of design and working of a 4-bit PISO(Parallel In Serial Out) Shift Register
 
