@@ -300,9 +300,10 @@ prep -design pes_fb_piso
 
 ![s2prep](https://github.com/Srini-web/pes_fb_piso/assets/77874288/5e542e74-a8e9-41ab-9c0e-cdb1026ca938)
 
-Prior to the above step we need to reconfigure the old `configure` json file to our specific design 
+Prior to the above step, we need to reconfigure the old `configure` json file to our specific design 
 
-![p1json](https://github.com/Srini-web/pes_fb_piso/assets/77874288/a74addf8-c9f5-4a1c-8eca-3e2301cc46b6)
+![p1Ajson](https://github.com/Srini-web/pes_fb_piso/assets/77874288/e48ef896-77c8-4b60-a552-17df0491d899)
+
 
 We also need to create a standard inverter using 
 https://github.com/Devipriya1921/Physical_Design_Using_OpenLANE_Sky130#inverter-standard-cell-layout--spice-extraction
