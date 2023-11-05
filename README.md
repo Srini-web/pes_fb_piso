@@ -469,8 +469,8 @@ report_clock_properties
 
 **Statistics**
 - Area = 4878.272 um2
-- Internal Power = 1.07e-05 W (84.4%)
-- Switching Power = 1.98e-06 (15.6%)
-- Leakage Power = 2.35e-10 (0.0%)
-- Total Power = 1.27e-05 (100%)
+- Internal Power = 1.06e-05 W (87.3%)
+- Switching Power = 1.55e-06 (12.7%)
+- Leakage Power = 2.25e-10 (0.0%)
+- Total Power = 1.22e-05 (100%)
 
